@@ -1,0 +1,5 @@
+apache-airflow-providers-common-sql
+apache-airflow-providers-postgres
+apache-airflow-providers-http
+apache-airflow-providers-amazon
+apache-airflow-providers-google
