@@ -104,6 +104,7 @@ services:
     command:
       - -c
       - |
+        pip install apache-airflow-providers-postgres apache-airflow-providers-http apache-airflow-providers-amazon
         function ver() {
           printf "%04d%04d%04d%04d" $${1//./ }
         }
