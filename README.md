@@ -73,7 +73,7 @@ chmod +x docker_python_installer.sh
 chmod +x docker_user_fix.sh
 ```
 
-### Eecute the Scripts
+### Execute the Scripts
 ```bash
 sudo ./docker_python_installer.sh
 sudo ./docker_user_fix.sh
