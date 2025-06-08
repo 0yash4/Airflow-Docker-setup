@@ -59,64 +59,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl wget git vim
 ```
 
-## 🐳 Step 2: Install Docker, Docker Compose & Python (Automated)
-
-We've provided automated installation scripts to make this process seamless.
-
-### Option A: One-Click Installation (Recommended)
-```bash
-# Make the script executable
-chmod +x docker_python_installer.sh
-
-# Run the automated installer (installs Docker, Docker Compose plugin, and latest Python)
-sudo ./docker_python_installer.sh
-```
-
-This script will:
-- Install Docker Engine and Docker Compose plugin
-- Install the latest stable Python 3.x version
-- Add your user to the docker group
-- Set up all necessary permissions
-- Handle common Ubuntu package issues automatically
-
-### Option B: Fix Docker Permissions Only (if Docker already installed)
-If you already have Docker installed but need to fix user permissions:
-
-```bash
-# Make the script executable
-chmod +x docker_user_fix.sh
-
-# Run the user permission fix
-sudo ./docker_user_fix.sh
-```
-
-### Verify Installation
-```bash
-# Check Docker version
-docker --version
-
-# Check Docker Compose
-docker compose version
-
-# Check Python version
-python3 --version
-
-# Test Docker (after logging out and back in)
-docker run hello-world
-```
-
-### Important: Log Out and Back In
-After running the installation script, you **must** log out and log back in for Docker commands to work without `sudo`:
-
-```bash
-# Option 1: Log out and back in (recommended)
-exit
-
-# Option 2: Apply group changes in current session
-newgrp docker
-```
-
-## 📁 Step 3: Clone and Setup Project
+## 📁 Step 2: Clone and Setup Project
 
 ### Clone the repository
 ```bash
@@ -183,48 +126,24 @@ RUN pip install --no-cache-dir -r /requirements.txt
 EOF
 ```
 
-## 📦 Step 5: Create Requirements File
-
-Create `requirements.txt`:
-
-```bash
-cat > requirements.txt << 'EOF'
-apache-airflow-providers-postgres==5.7.1
-apache-airflow-providers-http==4.5.1
-apache-airflow-providers-amazon==8.8.0
-psycopg2-binary==2.9.7
-pandas==2.1.1
-requests==2.31.0
-EOF
-```
-
-## 🚀 Step 6: Launch Airflow
+## 🚀 Step 5: Launch Airflow
 
 ### Initialize the database
 ```bash
 # Using Docker Compose plugin (recommended)
 docker compose up airflow-init
-
-# Or using standalone docker-compose  
-docker-compose up airflow-init
 ```
 
 ### Start all services
 ```bash
 # Using Docker Compose plugin (recommended)
 docker compose up -d
-
-# Or using standalone docker-compose (if you have it installed)
-docker-compose up -d
 ```
 
 ### Check service status
 ```bash
 # Using Docker Compose plugin
 docker compose ps
-
-# Or using standalone docker-compose
-docker-compose ps
 ```
 
 You should see all services running:
