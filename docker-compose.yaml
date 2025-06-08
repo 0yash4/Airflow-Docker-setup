@@ -26,10 +26,10 @@ x-airflow-common:
     context: .
     dockerfile: DOCKERFILE
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
-    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/Airflow-Docker-setup/dags
+    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/Airflow-Docker-setup/logs
+    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/Airflow-Docker-setup/config
+    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/Airflow-Docker-setup/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on: &airflow-common-depends-on
     postgres:
@@ -61,6 +61,9 @@ services:
     command: api-server
     ports:
       - "8080:8080"
+    volumes:
+      - ./simple_auth_manager_passwords.json:/opt/Airflow-Docker-setup/simple_auth_manager_passwords.json
+
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 30s
@@ -133,10 +136,7 @@ services:
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
-      _AIRFLOW_WWW_USER_CREATE: 'true'
-      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
-      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _AIRFLOW_WWW_USER_CREATE: ${_AIRFLOW_WWW_USER_CREATE}
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD}
     user: "0:0"
-
-volumes:
-  postgres-db-volume:
