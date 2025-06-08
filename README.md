@@ -126,6 +126,7 @@ chmod -R 755 dags logs plugins config
 ```bash
 # Create .env file for user configuration
 echo "AIRFLOW_UID=$(id -u)" > .env
+echo "_AIRFLOW_WWW_USER_CREATE=true" >> .env
 echo "_AIRFLOW_WWW_USER_USERNAME=admin" >> .env
 echo "_AIRFLOW_WWW_USER_PASSWORD=admin123" >> .env
 
