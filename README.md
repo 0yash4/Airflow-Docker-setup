@@ -79,6 +79,32 @@ sudo ./docker_python_installer.sh
 sudo ./docker_user_fix.sh
 ```
 
+### Verify Installation
+```bash
+# Check Docker version
+docker --version
+
+# Check Docker Compose
+docker compose version
+
+# Check Python version
+python3 --version
+
+# Test Docker (after logging out and back in)
+docker run hello-world
+```
+
+### Important: Log Out and Back In
+After running the installation script, you **must** log out and log back in for Docker commands to work without `sudo`:
+
+```bash
+# Option 1: Log out and back in (recommended)
+exit
+
+# Option 2: Apply group changes in current session
+newgrp docker
+```
+
 ### Create required directories and set permissions
 ```bash
 # Create all necessary Airflow directories in current folder
