@@ -304,6 +304,18 @@ docker compose down -v
 docker-compose down -v
 ```
 
+### 🧹 Full Docker Compose Cleanup Commands
+```bash
+# 1. Stop all running containers and remove containers, networks, volumes, and images created by docker-compose
+docker compose down --volumes --remove-orphans
+
+# 2. Remove all build cache (optional, but recommended for clean build)
+docker builder prune --all --force
+
+# 3. Optionally, remove all stopped containers and dangling images (extra clean)
+docker system prune --volumes --all --force
+```
+
 ### Access Airflow CLI
 ```bash
 # Run airflow commands (Docker Compose plugin)
@@ -391,18 +403,6 @@ For production use, consider:
 3. **Setup SSL/TLS** for web interface
 4. **Configure proper firewall rules**
 5. **Regular backups** of PostgreSQL data
-
-## 🧹 Full Docker Compose Cleanup Commands
-```bash
-# 1. Stop all running containers and remove containers, networks, volumes, and images created by docker-compose
-docker compose down --volumes --remove-orphans
-
-# 2. Remove all build cache (optional, but recommended for clean build)
-docker builder prune --all --force
-
-# 3. Optionally, remove all stopped containers and dangling images (extra clean)
-docker system prune --volumes --all --force
-```
 
 ## 📚 Next Steps
 
