@@ -73,6 +73,12 @@ chmod +x docker_python_installer.sh
 chmod +x docker_user_fix.sh
 ```
 
+### Eecute the Scripts
+```bash
+sudo ./docker_python_installer.sh
+sudo ./docker_user_fix.sh
+```
+
 ### Create required directories and set permissions
 ```bash
 # Create all necessary Airflow directories in current folder
