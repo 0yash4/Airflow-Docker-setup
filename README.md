@@ -170,6 +170,7 @@ sudo firewall-cmd --reload
 
 ### Access the web interface
 Open your browser and navigate to:
+
 **Note: Airflow Webserver can only be accessed through `Http://` and will not work if you use `Https://`** 
 ```
 http://your-server-ip:8080
