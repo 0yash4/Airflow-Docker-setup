@@ -97,6 +97,10 @@ services:
     command:
       - -c
       - |
+        # Install Python dependencies
+        pip install --no-cache-dir -r /requirements.txt
+        # Verify installation
+        airflow providers list | grep -E "(amazon|postgres|http|ssh|ftp|sftp|celery|redis)"
         if [[ -z "${AIRFLOW_UID}" ]]; then
           echo
           echo -e "\033[1;33mWARNING!!!: AIRFLOW_UID not set!\e[0m"
