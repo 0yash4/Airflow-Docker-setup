@@ -2,38 +2,6 @@
 
 A step-by-step guide to set up Apache Airflow using Docker Compose on any Linux cloud instance with minimal resource requirements.
 
-## 🚀 Quick Start (TL;DR)
-
-For experienced users who want to get up and running quickly:
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/0yash4/Airflow-Docker-setup.git
-cd Airflow-Docker-setup
-
-# 2. Run automated installation
-chmod +x docker_python_installer.sh
-sudo ./docker_python_installer.sh
-
-# 3. Log out and back in (important!)
-exit
-# SSH back into your server
-
-# 4. Setup Airflow directories and environment
-mkdir -p dags logs plugins config
-echo "AIRFLOW_UID=$(id -u)" > .env
-echo "_AIRFLOW_WWW_USER_USERNAME=admin" >> .env
-echo "_AIRFLOW_WWW_USER_PASSWORD=admin123" >> .env
-
-# 5. Start Airflow
-docker compose up airflow-init
-docker compose up -d
-
-# 6. Access at http://your-server-ip:8080
-```
-
----
-
 This setup is optimized for:
 - **Low resource consumption** (ideal for small cloud instances)
 - **Quick deployment** with Docker Compose
@@ -200,6 +168,7 @@ sudo firewall-cmd --reload
 
 ### Access the web interface
 Open your browser and navigate to:
+**Note: Airflow Webserver can only be accessed through `Http://` and will not work if you use `Https://`** 
 ```
 http://your-server-ip:8080
 ```
@@ -262,6 +231,22 @@ EOF
 The DAG will automatically appear in the Airflow UI within a few minutes.
 
 ## 🔧 Management Commands
+
+### Create/View Users
+   **Add New User:**
+   ```bash
+   docker compose run --rm airflow-cli airflow users create \
+   --username <name> \
+   --firstname <firstname> \
+   --lastname <lastname> \
+   --role <Admin/User/Viewer/'Other'> \
+   --email <email@example.com> \
+   --password <Strong_Password>
+   ```
+   **See User List:**
+   ```bash
+   docker compose run --rm airflow-cli airflow users list
+   ```
 
 ### View logs
 ```bash
