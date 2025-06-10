@@ -165,6 +165,8 @@ sudo ufw allow 8080
 sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
 ```
+### Expose Port 8080 in your management console
+![image](https://github.com/user-attachments/assets/b5a938b5-e643-4e14-bba2-e4bde949b0bd)
 
 ### Access the web interface
 Open your browser and navigate to:
