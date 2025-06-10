@@ -1,12 +1,33 @@
+# Core Airflow providers
 apache-airflow-providers-common-sql
-apache-airflow-providers-postgres
-apache-airflow-providers-http
-apache-airflow-providers-amazon
-apache-airflow-providers-google
 apache-airflow-providers-postgres==5.7.1
 apache-airflow-providers-http==4.5.1
+
+# AWS Providers - Comprehensive set for all AWS services
 apache-airflow-providers-amazon==8.8.0
+
+# Additional AWS-specific providers for specialized services
+# Note: Most AWS services are included in the main amazon provider
+# but some have separate packages for extended functionality
+
+# Database connectors
 psycopg2-binary==2.9.7
+
+# Data processing libraries
 pandas==2.1.1
 requests==2.31.0
-EOF
+
+# Additional useful providers for AWS workflows
+apache-airflow-providers-ssh
+apache-airflow-providers-ftp
+apache-airflow-providers-sftp
+apache-airflow-providers-celery
+apache-airflow-providers-redis
+
+# AWS SDK (boto3) - usually included with amazon provider but explicit for completeness
+boto3>=1.26.0
+botocore>=1.29.0
+
+# Additional data processing libraries often used with AWS
+numpy>=1.21.0
+pyarrow>=10.0.0
