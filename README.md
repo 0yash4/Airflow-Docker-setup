@@ -103,33 +103,7 @@ echo "_AIRFLOW_WWW_USER_EMAIL=Admin" >> .env
 sudo chown -R $(id -u):$(id -g) dags logs plugins config
 chmod -R 755 dags logs plugins config
 ```
-
-## 🏗️ Step 4: Create Dockerfile
-
-Create a `DOCKERFILE` in your project root:
-
-```bash
-cat > DOCKERFILE << 'EOF'
-FROM apache/airflow:latest
-
-USER root
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    python3-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-USER airflow
-
-# Install additional Python packages
-COPY requirements.txt /requirements.txt
-RUN pip install --no-cache-dir -r /requirements.txt
-EOF
-```
-
-## 🚀 Step 5: Launch Airflow
+## 🚀 Step 3: Launch Airflow
 
 ### Initialize the database
 ```bash
@@ -154,7 +128,7 @@ You should see all services running:
 - `airflow-webserver` (web UI)
 - `airflow-scheduler` (task scheduler)
 
-## 🌐 Step 7: Access Airflow Web UI
+## 🌐 Step 4: Access Airflow Web UI
 
 ### Open firewall port (if needed)
 ```bash
@@ -180,7 +154,7 @@ http://your-server-ip:8080
 - Username: `admin` (or what you set in .env)
 - Password: `admin123` (or what you set in .env)
 
-## 📝 Step 8: Create Your First DAG
+## 📝 Step 5: Create Your First DAG
 
 Create a sample DAG in the `dags` folder:
 
