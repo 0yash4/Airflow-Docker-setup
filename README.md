@@ -167,6 +167,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+from airflow.timetables.base import Timetable
 
 def print_hello():
     return 'Hello World from Airflow!'
@@ -185,7 +186,7 @@ dag = DAG(
     'hello_world',
     default_args=default_args,
     description='A simple Hello World DAG',
-    schedule_interval='@daily',
+    schedule='@daily', # CHANGE THIS TO 'schedule'
     catchup=False,
 )
 
