@@ -97,7 +97,8 @@ echo "AIRFLOW_UID=$(id -u)" > .env
 echo "_AIRFLOW_WWW_USER_CREATE=true" >> .env
 echo "_AIRFLOW_WWW_USER_USERNAME=admin" >> .env
 echo "_AIRFLOW_WWW_USER_PASSWORD=admin123" >> .env
-echo "_AIRFLOW_WWW_USER_EMAIL=Admin" >> .env
+echo "_AIRFLOW_WWW_USER_EMAIL=Admin@example.com" >> .env
+echo "_AIRFLOW_WWW_USER_ROLE=Admin" >> .env
 
 # Ensure directories have correct permissions (already done above, but double-check)
 sudo chown -R $(id -u):$(id -g) dags logs plugins config
